@@ -241,80 +241,11 @@ loginModal.querySelectorAll("[data-demo]").forEach((el) => {
 	});
 });
 
-// ---------- Customer coin carousel ----------
-const coinStage = document.getElementById("coinStage");
-if (coinStage) {
-	const PARTNERS = [
-		{ mark: "NW", name: "Northwind", note: "Scaling payments across 34 markets" },
-		{ mark: "C",  name: "Contoso",   note: "Cut FX costs by 41% in a year" },
-		{ mark: "G",  name: "Globex",    note: "Runs global payroll on Revolut" },
-		{ mark: "V",  name: "Vertex",    note: "Issued 2,000 team cards in a week" },
-		{ mark: "L",  name: "Lumen",     note: "Real-time spend controls for 12 teams" },
-		{ mark: "A",  name: "Atlas",     note: "Automated expenses end to end" },
-		{ mark: "U",  name: "Umbra",     note: "One account across 18 currencies" },
-		{ mark: "M",  name: "Meridian",  note: "Closes the books 3× faster" },
-	];
-
-	const coinCaption = document.getElementById("coinCaption");
-	const coinDots = document.getElementById("coinDots");
-	const coinwall = document.getElementById("coinwall");
-	const N = PARTNERS.length;
-	const coins = [];
-	let active = 0;
-
-	PARTNERS.forEach((p, i) => {
-		const coin = document.createElement("div");
-		coin.className = "coin";
-		coin.setAttribute("role", "button");
-		coin.setAttribute("aria-label", p.name);
-		coin.innerHTML = `<div class="coin__disc"><span class="coin__mark">${p.mark}</span></div>`;
-		coin.addEventListener("click", () => { go(i); restart(); });
-		coinStage.appendChild(coin);
-		coins.push(coin);
-
-		const dot = document.createElement("button");
-		dot.className = "coinwall__dot";
-		dot.type = "button";
-		dot.setAttribute("aria-label", `Show ${p.name}`);
-		dot.addEventListener("click", () => { go(i); restart(); });
-		coinDots.appendChild(dot);
-	});
-	const dots = [...coinDots.children];
-
-	function render() {
-		coins.forEach((coin, i) => {
-			let rel = i - active;
-			if (rel > N / 2) rel -= N;
-			if (rel < -N / 2) rel += N;
-			const abs = Math.abs(rel);
-			const hidden = abs > 3;
-			coin.style.transform =
-				`translateX(${rel * 132}px) translateZ(${-abs * 140}px) rotateY(${rel * -22}deg) scale(${Math.max(0.55, 1 - abs * 0.14)})`;
-			coin.style.opacity = hidden ? "0" : String(Math.max(0.15, 1 - abs * 0.26));
-			coin.style.zIndex = String(100 - abs);
-			coin.style.pointerEvents = hidden ? "none" : "auto";
-			coin.classList.toggle("is-active", rel === 0);
-		});
-		dots.forEach((d, i) => d.classList.toggle("is-active", i === active));
-		const p = PARTNERS[active];
-		coinCaption.innerHTML = `<b>${p.name}</b> · ${p.note}`;
-	}
-
-	function go(i) { active = (i + N) % N; render(); }
-
-	// Auto-advance on loop, pausing on hover or when the tab is hidden
-	const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-	let timer = null;
-	function start() { if (!reduce && !timer) timer = setInterval(() => go(active + 1), 2600); }
-	function stop() { if (timer) { clearInterval(timer); timer = null; } }
-	function restart() { stop(); start(); }
-
-	document.getElementById("coinPrev").addEventListener("click", () => { go(active - 1); restart(); });
-	document.getElementById("coinNext").addEventListener("click", () => { go(active + 1); restart(); });
-	coinwall.addEventListener("mouseenter", stop);
-	coinwall.addEventListener("mouseleave", start);
-	document.addEventListener("visibilitychange", () => { document.hidden ? stop() : start(); });
-
-	render();
-	start();
+// ---------- Customer logo showreel ----------
+// The partner-logo carousel is the design team's approved video, looping on mute.
+// Honour reduced-motion preferences by holding on the poster frame instead of playing.
+const showreelVideo = document.querySelector(".showreel__video");
+if (showreelVideo && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+	showreelVideo.removeAttribute("autoplay");
+	showreelVideo.pause();
 }

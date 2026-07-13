@@ -818,112 +818,17 @@ sup { font-size: 0.55em; }
 }
 .customers__sub { color: var(--text-dim); font-size: 18px; max-width: 560px; margin: 0 auto; }
 
-/* Coin carousel */
-.coinwall { position: relative; max-width: 1080px; margin: 32px auto 8px; text-align: center; }
-.coinwall__badge {
-	display: inline-flex;
-	align-items: center;
-	gap: 6px;
-	padding: 6px 14px;
-	border-radius: 999px;
-	font-size: 12px;
-	font-weight: 600;
-	letter-spacing: 0.04em;
-	color: var(--text-dim);
-	background: rgba(255, 255, 255, 0.05);
-	border: 1px solid var(--line);
-}
-.coinwall__stage { position: relative; height: 320px; margin-top: 12px; perspective: 1400px; }
-.coin {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	width: 190px;
-	height: 190px;
-	margin: -95px 0 0 -95px;
-	transform-style: preserve-3d;
-	transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.7s ease;
-	cursor: pointer;
-}
-.coin__disc {
-	position: relative;
+/* Logo showreel (partner carousel video) */
+.showreel { position: relative; max-width: 960px; margin: 36px auto 0; }
+.showreel__video {
+	display: block;
 	width: 100%;
-	height: 100%;
-	border-radius: 50%;
-	background:
-		radial-gradient(circle at 32% 26%, #f2f5f8 0%, #c3cad4 20%, #8b929d 48%, #4a4f59 78%, #23262d 100%);
-	box-shadow:
-		inset 0 3px 8px rgba(255, 255, 255, 0.55),
-		inset 0 -14px 30px rgba(0, 0, 0, 0.55),
-		inset 0 0 0 6px rgba(255, 255, 255, 0.06),
-		0 30px 60px rgba(0, 0, 0, 0.5);
-	display: grid;
-	place-items: center;
-	overflow: hidden;
-}
-.coin__disc::before {
-	content: "";
-	position: absolute;
-	inset: -20%;
-	background: conic-gradient(from 0deg, transparent 0deg, rgba(255, 255, 255, 0.35) 40deg, transparent 90deg, transparent 220deg, rgba(255, 255, 255, 0.22) 260deg, transparent 320deg);
-	animation: coinSheen 6s linear infinite;
-	opacity: 0.5;
-}
-@keyframes coinSheen { to { transform: rotate(360deg); } }
-.coin__disc::after {
-	content: "";
-	position: absolute;
-	inset: 8px;
-	border-radius: 50%;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18), inset 0 0 24px rgba(0, 0, 0, 0.35);
-}
-.coin__mark {
-	position: relative;
-	z-index: 2;
-	font-family: var(--font-display);
-	font-weight: 800;
-	font-size: 54px;
-	letter-spacing: -0.02em;
-	color: #8c93a0;
-	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5), 0 -1px 2px rgba(0, 0, 0, 0.55);
-}
-.coin.is-active .coin__disc {
-	box-shadow:
-		inset 0 3px 8px rgba(255, 255, 255, 0.6),
-		inset 0 -14px 30px rgba(0, 0, 0, 0.5),
-		0 30px 70px rgba(0, 0, 0, 0.55),
-		0 0 0 2px rgba(124, 140, 248, 0.55),
-		0 0 60px rgba(124, 140, 248, 0.4);
-}
-.coinwall__caption { min-height: 26px; margin-top: 16px; color: var(--text-dim); font-size: 15px; }
-.coinwall__caption b { color: #fff; font-weight: 700; }
-.coinwall__nav { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 14px; }
-.coinwall__arrow {
-	width: 44px;
-	height: 44px;
-	border-radius: 50%;
+	border-radius: 24px;
+	background: #000;
 	border: 1px solid var(--line);
-	background: rgba(255, 255, 255, 0.04);
-	color: #fff;
-	font-size: 22px;
-	line-height: 1;
-	cursor: pointer;
-	transition: background 0.15s, border-color 0.15s, transform 0.15s;
+	box-shadow: 0 40px 90px rgba(0, 0, 0, 0.55), 0 0 80px rgba(124, 140, 248, 0.12);
 }
-.coinwall__arrow:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.4); }
-.coinwall__arrow:active { transform: scale(0.94); }
-.coinwall__dots { display: flex; gap: 8px; }
-.coinwall__dot {
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	border: none;
-	padding: 0;
-	background: rgba(255, 255, 255, 0.22);
-	cursor: pointer;
-	transition: background 0.2s, transform 0.2s;
-}
-.coinwall__dot.is-active { background: linear-gradient(90deg, var(--accent-a), var(--accent-b)); transform: scale(1.3); }
+.showreel__caption { margin-top: 16px; text-align: center; color: var(--text-dim); font-size: 15px; }
 
 /* Testimonials */
 .quotes {
@@ -970,11 +875,6 @@ sup { font-size: 0.55em; }
 	.quotes { grid-template-columns: 1fr; max-width: 480px; }
 }
 @media (max-width: 680px) {
-	.coinwall__stage { height: 260px; }
-	.coin { width: 150px; height: 150px; margin: -75px 0 0 -75px; }
-	.coin__mark { font-size: 42px; }
-}
-@media (prefers-reduced-motion: reduce) {
-	.coin { transition: none; }
-	.coin__disc::before { animation: none; }
+	.showreel { margin-top: 28px; }
+	.showreel__video { border-radius: 18px; }
 }
