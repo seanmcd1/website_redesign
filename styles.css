@@ -774,3 +774,207 @@ sup { font-size: 0.55em; }
 	.login__qr { display: none; }
 	.login__socials { gap: 28px; }
 }
+
+/* ---------- Customers ---------- */
+.customers { position: relative; padding: 100px 24px 90px; overflow: hidden; }
+.customers__glow {
+	position: absolute;
+	top: 8%;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 900px;
+	height: 520px;
+	background:
+		radial-gradient(ellipse at 40% 40%, rgba(124, 140, 248, 0.20), transparent 60%),
+		radial-gradient(ellipse at 65% 60%, rgba(75, 208, 238, 0.14), transparent 60%);
+	filter: blur(50px);
+	pointer-events: none;
+}
+.customers__head { position: relative; max-width: 720px; margin: 0 auto; text-align: center; }
+.customers__eyebrow {
+	display: inline-block;
+	font-weight: 600;
+	font-size: 14px;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: transparent;
+	background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+	-webkit-background-clip: text;
+	background-clip: text;
+	margin-bottom: 16px;
+}
+.customers__title {
+	font-size: clamp(30px, 4vw, 48px);
+	font-weight: 800;
+	letter-spacing: -0.02em;
+	line-height: 1.06;
+	margin-bottom: 16px;
+}
+.customers__grad {
+	color: transparent;
+	background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+	-webkit-background-clip: text;
+	background-clip: text;
+}
+.customers__sub { color: var(--text-dim); font-size: 18px; max-width: 560px; margin: 0 auto; }
+
+/* Coin carousel */
+.coinwall { position: relative; max-width: 1080px; margin: 32px auto 8px; text-align: center; }
+.coinwall__badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 6px 14px;
+	border-radius: 999px;
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	color: var(--text-dim);
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid var(--line);
+}
+.coinwall__stage { position: relative; height: 320px; margin-top: 12px; perspective: 1400px; }
+.coin {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 190px;
+	height: 190px;
+	margin: -95px 0 0 -95px;
+	transform-style: preserve-3d;
+	transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.7s ease;
+	cursor: pointer;
+}
+.coin__disc {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background:
+		radial-gradient(circle at 32% 26%, #f2f5f8 0%, #c3cad4 20%, #8b929d 48%, #4a4f59 78%, #23262d 100%);
+	box-shadow:
+		inset 0 3px 8px rgba(255, 255, 255, 0.55),
+		inset 0 -14px 30px rgba(0, 0, 0, 0.55),
+		inset 0 0 0 6px rgba(255, 255, 255, 0.06),
+		0 30px 60px rgba(0, 0, 0, 0.5);
+	display: grid;
+	place-items: center;
+	overflow: hidden;
+}
+.coin__disc::before {
+	content: "";
+	position: absolute;
+	inset: -20%;
+	background: conic-gradient(from 0deg, transparent 0deg, rgba(255, 255, 255, 0.35) 40deg, transparent 90deg, transparent 220deg, rgba(255, 255, 255, 0.22) 260deg, transparent 320deg);
+	animation: coinSheen 6s linear infinite;
+	opacity: 0.5;
+}
+@keyframes coinSheen { to { transform: rotate(360deg); } }
+.coin__disc::after {
+	content: "";
+	position: absolute;
+	inset: 8px;
+	border-radius: 50%;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18), inset 0 0 24px rgba(0, 0, 0, 0.35);
+}
+.coin__mark {
+	position: relative;
+	z-index: 2;
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 54px;
+	letter-spacing: -0.02em;
+	color: #8c93a0;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5), 0 -1px 2px rgba(0, 0, 0, 0.55);
+}
+.coin.is-active .coin__disc {
+	box-shadow:
+		inset 0 3px 8px rgba(255, 255, 255, 0.6),
+		inset 0 -14px 30px rgba(0, 0, 0, 0.5),
+		0 30px 70px rgba(0, 0, 0, 0.55),
+		0 0 0 2px rgba(124, 140, 248, 0.55),
+		0 0 60px rgba(124, 140, 248, 0.4);
+}
+.coinwall__caption { min-height: 26px; margin-top: 16px; color: var(--text-dim); font-size: 15px; }
+.coinwall__caption b { color: #fff; font-weight: 700; }
+.coinwall__nav { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 14px; }
+.coinwall__arrow {
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	border: 1px solid var(--line);
+	background: rgba(255, 255, 255, 0.04);
+	color: #fff;
+	font-size: 22px;
+	line-height: 1;
+	cursor: pointer;
+	transition: background 0.15s, border-color 0.15s, transform 0.15s;
+}
+.coinwall__arrow:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.4); }
+.coinwall__arrow:active { transform: scale(0.94); }
+.coinwall__dots { display: flex; gap: 8px; }
+.coinwall__dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	border: none;
+	padding: 0;
+	background: rgba(255, 255, 255, 0.22);
+	cursor: pointer;
+	transition: background 0.2s, transform 0.2s;
+}
+.coinwall__dot.is-active { background: linear-gradient(90deg, var(--accent-a), var(--accent-b)); transform: scale(1.3); }
+
+/* Testimonials */
+.quotes {
+	max-width: 1080px;
+	margin: 56px auto 0;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 18px;
+}
+.quote {
+	background: var(--bg-card);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	padding: 26px 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	text-align: left;
+	transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.quote:hover { transform: translateY(-6px); border-color: rgba(255, 255, 255, 0.3); }
+.quote__stars { color: #f3c14b; font-size: 15px; letter-spacing: 2px; }
+.quote blockquote { font-size: 16px; line-height: 1.5; color: #e6e9ee; }
+.quote figcaption { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+.quote__avatar {
+	width: 42px;
+	height: 42px;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+	font-weight: 700;
+	font-family: var(--font-display);
+	color: #fff;
+	font-size: 15px;
+	flex-shrink: 0;
+}
+.quote__avatar--a { background: linear-gradient(135deg, var(--accent-a), var(--accent-b)); }
+.quote__avatar--b { background: linear-gradient(135deg, #c56ee0, #8f7bf2); }
+.quote__avatar--c { background: linear-gradient(135deg, #46d68c, #4bd0ee); }
+.quote figcaption b { display: block; font-size: 14.5px; }
+.quote figcaption small { color: var(--text-dim); font-size: 13px; }
+
+@media (max-width: 900px) {
+	.quotes { grid-template-columns: 1fr; max-width: 480px; }
+}
+@media (max-width: 680px) {
+	.coinwall__stage { height: 260px; }
+	.coin { width: 150px; height: 150px; margin: -75px 0 0 -75px; }
+	.coin__mark { font-size: 42px; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.coin { transition: none; }
+	.coin__disc::before { animation: none; }
+}
