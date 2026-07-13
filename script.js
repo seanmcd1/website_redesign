@@ -148,3 +148,95 @@ function stopAutoRotate() {
 
 // kick off
 playScenario("holiday");
+
+// ---------- Login modal ----------
+const loginModal = document.getElementById("loginModal");
+const loginDialog = loginModal.querySelector(".modal__dialog");
+const loginForm = document.getElementById("loginForm");
+const loginPhone = document.getElementById("loginPhone");
+const loginError = document.getElementById("loginError");
+const loginContinue = document.getElementById("loginContinue");
+let lastFocused = null;
+
+const FOCUSABLE = 'button, [href], input, [tabindex]:not([tabindex="-1"])';
+
+function openLogin() {
+	lastFocused = document.activeElement;
+	loginModal.hidden = false;
+	document.body.style.overflow = "hidden";
+	// close the mobile menu if it was open
+	mobileMenu.classList.remove("is-open");
+	burger.setAttribute("aria-expanded", "false");
+	requestAnimationFrame(() => loginPhone.focus());
+}
+
+function closeLogin() {
+	loginModal.hidden = true;
+	document.body.style.overflow = "";
+	clearError();
+	loginForm.reset();
+	if (lastFocused) lastFocused.focus();
+}
+
+function showError(msg) {
+	loginError.textContent = msg;
+	loginError.hidden = false;
+	loginPhone.classList.add("is-invalid");
+}
+function clearError() {
+	loginError.hidden = true;
+	loginPhone.classList.remove("is-invalid");
+}
+
+// Open triggers
+document.querySelectorAll("[data-open-login]").forEach((btn) => {
+	btn.addEventListener("click", openLogin);
+});
+
+// Close triggers (X + overlay)
+loginModal.querySelectorAll("[data-close-login]").forEach((el) => {
+	el.addEventListener("click", closeLogin);
+});
+
+// Esc to close + focus trap
+document.addEventListener("keydown", (e) => {
+	if (loginModal.hidden) return;
+	if (e.key === "Escape") { closeLogin(); return; }
+	if (e.key === "Tab") {
+		const items = [...loginDialog.querySelectorAll(FOCUSABLE)].filter((el) => !el.disabled && el.offsetParent !== null);
+		if (!items.length) return;
+		const first = items[0];
+		const last = items[items.length - 1];
+		if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+		else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+	}
+});
+
+// Clear the error as soon as the user starts typing
+loginPhone.addEventListener("input", clearError);
+
+// Submit — validate, then run stub auth
+loginForm.addEventListener("submit", (e) => {
+	e.preventDefault();
+	const digits = loginPhone.value.replace(/\D/g, "");
+	if (!digits) { showError("Please enter your phone number."); loginPhone.focus(); return; }
+	if (digits.length < 7) { showError("That phone number looks too short."); loginPhone.focus(); return; }
+
+	clearError();
+	loginContinue.disabled = true;
+	loginContinue.textContent = "Checking…";
+	// Stub: no auth backend wired up yet.
+	setTimeout(() => {
+		loginContinue.disabled = false;
+		loginContinue.textContent = "Continue";
+		showError("This is a demo — login isn’t connected to a real account yet.");
+	}, 700);
+});
+
+// Stub handlers for the remaining actions (socials, create account, lost access)
+loginModal.querySelectorAll("[data-demo]").forEach((el) => {
+	el.addEventListener("click", (e) => {
+		e.preventDefault();
+		showError("This is a demo — that option isn’t wired up yet.");
+	});
+});
