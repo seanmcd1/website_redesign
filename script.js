@@ -3,26 +3,17 @@
 // ---------- Refer-a-friend promo bar ----------
 const promoBar = document.getElementById("promoBar");
 if (promoBar) {
-	const PROMO_KEY = "raf-promo-dismissed";
-	let dismissed = false;
-	try { dismissed = localStorage.getItem(PROMO_KEY) === "1"; } catch (_) {}
-
-	// Keep the fixed nav's offset in sync with the bar's real height (it can wrap on small screens).
+	// The banner shows on every page load. Dismissing hides it for the current
+	// view only — refreshing the page brings it back.
 	const syncPromoHeight = () =>
 		document.body.style.setProperty("--promo-h", `${promoBar.offsetHeight}px`);
 
-	if (dismissed) {
-		document.body.classList.remove("promo-open");
-		promoBar.hidden = true;
-	} else {
-		syncPromoHeight();
-		window.addEventListener("resize", syncPromoHeight, { passive: true });
-	}
+	syncPromoHeight();
+	window.addEventListener("resize", syncPromoHeight, { passive: true });
 
 	document.getElementById("promoClose").addEventListener("click", () => {
 		document.body.classList.remove("promo-open");
 		promoBar.hidden = true;
-		try { localStorage.setItem(PROMO_KEY, "1"); } catch (_) {}
 	});
 }
 

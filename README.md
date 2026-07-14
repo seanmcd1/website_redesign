@@ -6,7 +6,7 @@ An educational recreation of Revolut's [AIR landing page](https://www.revolut.co
 
 ## What's replicated
 
-- **Refer-a-friend promo bar** — a dismissible announcement banner pinned above the nav ("Refer a friend — you both earn £15"). It offsets the fixed nav automatically and remembers dismissal via `localStorage`.
+- **Refer-a-friend promo bar** — a dismissible announcement banner pinned above the nav ("Refer a friend — you both earn £15"). It offsets the fixed nav automatically. It shows on every page load; dismissing hides it for the current view only, so a refresh brings it back.
 - **Sticky nav** with blur backdrop, Personal/Business/Kids & Teens/Company links, and a mobile hamburger menu
 - **Hero** — "Ask, and AIR makes it happen" with the five use-case tabs from the real page (Holiday budgeting, Travel essentials, Portfolio performance, Card controls, Subscription management). Instead of Revolut's demo videos, each tab drives a **live animated chat** inside a CSS phone mockup, with typing indicators and rich result cards. Tabs auto-rotate every 14s until you click one.
 - **"Enter a new era of money intelligence"** — how to open AIR in the app (swipe down, or Profile → Chats → AIR)
