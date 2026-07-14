@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Loved by 500+ teams worldwide — customer spotlight graphic">
+	<defs>
+		<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+			<stop offset="0" stop-color="#0c0c12"/>
+			<stop offset="1" stop-color="#050507"/>
+		</linearGradient>
+		<linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+			<stop offset="0" stop-color="#7c8cf8"/>
+			<stop offset="1" stop-color="#4bd0ee"/>
+		</linearGradient>
+		<radialGradient id="glow" cx="50%" cy="18%" r="60%">
+			<stop offset="0" stop-color="#7c8cf8" stop-opacity="0.28"/>
+			<stop offset="0.55" stop-color="#4bd0ee" stop-opacity="0.10"/>
+			<stop offset="1" stop-color="#4bd0ee" stop-opacity="0"/>
+		</radialGradient>
+	</defs>
+
+	<rect width="1200" height="630" fill="url(#bg)"/>
+	<rect width="1200" height="630" fill="url(#glow)"/>
+	<rect x="1" y="1" width="1198" height="628" rx="28" fill="none" stroke="#ffffff" stroke-opacity="0.10"/>
+
+	<!-- Brand lockup -->
+	<g transform="translate(72,72)" fill="#ffffff">
+		<path d="M18 0C22 0 25 3 25 7c0 3-1.4 5.4-3.7 6.6L26 24h-5.8l-4.2-9.4H10V24H4.8V0H18ZM10 4.6v5.2h6c1.3 0 2.3-1 2.3-2.4S17.3 4.6 16 4.6h-6Z"/>
+		<text x="38" y="19" font-family="'Inter Tight', Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="0.2">Revolut</text>
+	</g>
+	<text x="1128" y="90" text-anchor="end" font-family="'Inter Tight', Arial, sans-serif" font-weight="600" font-size="18" letter-spacing="3" fill="#4bd0ee" opacity="0.9">CUSTOMERS</text>
+
+	<!-- Headline -->
+	<text x="72" y="212" font-family="'Inter Tight', Arial, sans-serif" font-weight="800" font-size="72" letter-spacing="-1.5" fill="#ffffff">Loved by <tspan fill="url(#accent)">500+</tspan> teams</text>
+	<text x="72" y="288" font-family="'Inter Tight', Arial, sans-serif" font-weight="800" font-size="72" letter-spacing="-1.5" fill="#ffffff">worldwide</text>
+	<text x="74" y="336" font-family="'Inter', Arial, sans-serif" font-weight="400" font-size="24" fill="#8b959e">Finance teams trust Revolut to move, manage and grow their money.</text>
+
+	<!-- Rating pill -->
+	<g transform="translate(72,378)">
+		<rect width="330" height="52" rx="26" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.14"/>
+		<text x="24" y="34" font-family="Arial, sans-serif" font-size="22" fill="#f3c14b" letter-spacing="2">★★★★★</text>
+		<text x="150" y="33" font-family="'Inter', Arial, sans-serif" font-weight="600" font-size="18" fill="#ffffff">4.9/5 average rating</text>
+	</g>
+
+	<!-- Customer logo wall -->
+	<g transform="translate(72,486)">
+		<text x="0" y="0" font-family="'Inter', Arial, sans-serif" font-weight="600" font-size="14" letter-spacing="2" fill="#8b959e">TRUSTED BY</text>
+		<g transform="translate(0,26)" fill="#ffffff" fill-opacity="0.82" font-family="'Inter Tight', Arial, sans-serif" font-weight="700" font-size="26">
+			<g transform="translate(0,0)">
+				<circle cx="14" cy="14" r="13" fill="none" stroke="url(#accent)" stroke-width="3"/>
+				<text x="40" y="23">Northwind</text>
+			</g>
+			<g transform="translate(300,0)">
+				<rect x="2" y="2" width="24" height="24" rx="6" fill="url(#accent)"/>
+				<text x="40" y="23">Vertex</text>
+			</g>
+			<g transform="translate(540,0)">
+				<path d="M14 1 27 25 1 25 Z" fill="url(#accent)"/>
+				<text x="40" y="23">Globex</text>
+			</g>
+			<g transform="translate(800,0)">
+				<path d="M14 1 26 8 26 20 14 27 2 20 2 8 Z" fill="url(#accent)"/>
+				<text x="40" y="23">Meridian</text>
+			</g>
+		</g>
+		<g transform="translate(0,84)" fill="#ffffff" fill-opacity="0.82" font-family="'Inter Tight', Arial, sans-serif" font-weight="700" font-size="26">
+			<g transform="translate(0,0)">
+				<circle cx="8" cy="14" r="7" fill="url(#accent)"/><circle cx="22" cy="14" r="7" fill="#ffffff" fill-opacity="0.5"/>
+				<text x="40" y="23">Cobalt</text>
+			</g>
+			<g transform="translate(300,0)">
+				<path d="M2 26 14 2 26 26 Z" fill="none" stroke="url(#accent)" stroke-width="3"/>
+				<text x="40" y="23">Solstice</text>
+			</g>
+			<g transform="translate(540,0)">
+				<rect x="2" y="2" width="24" height="24" rx="13" fill="none" stroke="url(#accent)" stroke-width="3"/><rect x="10" y="10" width="8" height="8" rx="2" fill="url(#accent)"/>
+				<text x="40" y="23">Nimbus</text>
+			</g>
+			<g transform="translate(800,0)">
+				<path d="M4 22 12 6 20 22 12 16 Z" fill="url(#accent)"/>
+				<text x="40" y="23">Kestrel</text>
+			</g>
+		</g>
+	</g>
+</svg>
