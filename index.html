@@ -11,7 +11,21 @@
 	<link rel="stylesheet" href="styles.css" />
 	<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='white'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='bold' font-size='16' fill='black' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E" />
 </head>
-<body>
+<body class="promo-open">
+
+	<!-- ============ REFER-A-FRIEND PROMO BAR ============ -->
+	<div class="promo" id="promoBar" role="region" aria-label="Refer a friend promotion">
+		<div class="promo__inner">
+			<p class="promo__text">
+				<span class="promo__badge" aria-hidden="true">🎁</span>
+				<span><strong>Refer a friend</strong> — you both earn <strong>£15</strong> when they join Revolut.</span>
+			</p>
+			<a href="#signup" class="promo__cta">Invite friends</a>
+			<button class="promo__close" id="promoClose" type="button" aria-label="Dismiss refer-a-friend promotion">
+				<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+			</button>
+		</div>
+	</div>
 
 	<!-- ============ NAV ============ -->
 	<header class="nav" id="nav">
