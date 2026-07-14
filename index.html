@@ -218,43 +218,58 @@
 		<!-- ============ PLANS ============ -->
 		<section class="plans">
 			<h2 class="plans__title">Choose your plan</h2>
+
+			<!-- Multi-currency switcher — prices update instantly across every plan -->
+			<div class="currency" role="group" aria-label="Display prices in currency">
+				<span class="currency__label" id="currencyLabel">Show prices in</span>
+				<div class="currency__toggle" role="radiogroup" aria-labelledby="currencyLabel">
+					<button type="button" class="currency__opt" data-currency="GBP" role="radio" aria-checked="true">🇬🇧 GBP</button>
+					<button type="button" class="currency__opt" data-currency="EUR" role="radio" aria-checked="false">🇪🇺 EUR</button>
+					<button type="button" class="currency__opt" data-currency="USD" role="radio" aria-checked="false">🇺🇸 USD</button>
+					<button type="button" class="currency__opt" data-currency="JPY" role="radio" aria-checked="false">🇯🇵 JPY</button>
+					<button type="button" class="currency__opt" data-currency="SGD" role="radio" aria-checked="false">🇸🇬 SGD</button>
+				</div>
+			</div>
+
 			<div class="plans__grid">
 				<article class="plan">
 					<div class="plan__swatch plan__swatch--standard"></div>
 					<h3 class="plan__name">Standard</h3>
-					<p class="plan__price">Free</p>
+					<p class="plan__price" data-plan="standard">Free</p>
 					<p class="plan__desc">For the financial basics — everything you need for better money management, all in one place.</p>
 					<a href="#" class="btn btn--outline btn--block">Get Standard</a>
 				</article>
 				<article class="plan">
 					<div class="plan__swatch plan__swatch--plus"></div>
 					<h3 class="plan__name">Plus</h3>
-					<p class="plan__price">£3.99/month</p>
+					<p class="plan__price" data-plan="plus">£3.99/month</p>
 					<p class="plan__desc">For the smart spender — extra benefits like better limits abroad and cover for your purchases.</p>
 					<a href="#" class="btn btn--outline btn--block">Get Plus</a>
 				</article>
 				<article class="plan plan--featured">
 					<div class="plan__swatch plan__swatch--premium"></div>
 					<h3 class="plan__name">Premium</h3>
-					<p class="plan__price">£7.99/month</p>
+					<p class="plan__price" data-plan="premium">£7.99/month</p>
 					<p class="plan__desc">For elevating every day — exclusive subscriptions, better savings rates, and unlimited currency exchange.</p>
 					<a href="#" class="btn btn--white btn--block">Get Premium</a>
 				</article>
 				<article class="plan">
 					<div class="plan__swatch plan__swatch--metal"></div>
 					<h3 class="plan__name">Metal</h3>
-					<p class="plan__price">£14.99/month</p>
+					<p class="plan__price" data-plan="metal">£14.99/month</p>
 					<p class="plan__desc">For global travellers and traders — travel insurance, enhanced limits, and partner subscriptions.</p>
 					<a href="#" class="btn btn--outline btn--block">Get Metal</a>
 				</article>
 				<article class="plan">
 					<div class="plan__swatch plan__swatch--ultra"></div>
 					<h3 class="plan__name">Ultra</h3>
-					<p class="plan__price">£55/month</p>
+					<p class="plan__price" data-plan="ultra">£55/month</p>
 					<p class="plan__desc">For the best of everything — unlimited lounge access, monthly global data, and top-tier benefits.</p>
 					<a href="#" class="btn btn--outline btn--block">Get Ultra</a>
 				</article>
 			</div>
+
+			<p class="plans__fx-note" id="fxNote">Prices shown in GBP. Local prices are indicative and for demo purposes only.</p>
 		</section>
 	</main>
 
