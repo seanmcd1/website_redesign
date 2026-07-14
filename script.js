@@ -267,6 +267,74 @@ loginModal.querySelectorAll("[data-demo]").forEach((el) => {
 	});
 });
 
+// ---------- Multi-currency plan pricing ----------
+// Japan Team asked for a multi-currency view in "Choose your plan".
+// Prices are indicative local pricing for the demo, not live FX.
+const CURRENCIES = {
+	GBP: { symbol: "£", decimals: 2, prices: { standard: 0, plus: 3.99, premium: 7.99, metal: 14.99, ultra: 55 } },
+	EUR: { symbol: "€", decimals: 2, prices: { standard: 0, plus: 3.99, premium: 7.99, metal: 14.99, ultra: 55 } },
+	USD: { symbol: "$", decimals: 2, prices: { standard: 0, plus: 4.99, premium: 9.99, metal: 16.99, ultra: 65 } },
+	JPY: { symbol: "¥", decimals: 0, prices: { standard: 0, plus: 600, premium: 1200, metal: 2200, ultra: 8000 } },
+	SGD: { symbol: "S$", decimals: 2, prices: { standard: 0, plus: 4.99, premium: 9.99, metal: 19.99, ultra: 78 } },
+};
+
+const currencyToggle = document.querySelector(".currency__toggle");
+if (currencyToggle) {
+	const CURRENCY_KEY = "plans-currency";
+	const opts = [...currencyToggle.querySelectorAll(".currency__opt")];
+	const priceEls = [...document.querySelectorAll(".plan__price[data-plan]")];
+	const fxNote = document.getElementById("fxNote");
+
+	const formatPrice = (code, plan) => {
+		const cur = CURRENCIES[code];
+		const amount = cur.prices[plan];
+		if (!amount) return "Free";
+		const value = amount.toLocaleString("en-GB", {
+			minimumFractionDigits: cur.decimals,
+			maximumFractionDigits: cur.decimals,
+		});
+		return `${cur.symbol}${value}/month`;
+	};
+
+	function applyCurrency(code, { animate = true } = {}) {
+		if (!CURRENCIES[code]) code = "GBP";
+
+		opts.forEach((o) => o.setAttribute("aria-checked", String(o.dataset.currency === code)));
+
+		priceEls.forEach((el) => {
+			const next = formatPrice(code, el.dataset.plan);
+			if (!animate) { el.textContent = next; return; }
+			el.classList.add("is-updating");
+			setTimeout(() => {
+				el.textContent = next;
+				el.classList.remove("is-updating");
+			}, 180);
+		});
+
+		if (fxNote) fxNote.textContent =
+			`Prices shown in ${code}. Local prices are indicative and for demo purposes only.`;
+
+		try { localStorage.setItem(CURRENCY_KEY, code); } catch (_) {}
+	}
+
+	opts.forEach((opt, i) => {
+		opt.addEventListener("click", () => applyCurrency(opt.dataset.currency));
+		// Arrow-key navigation across the radio group
+		opt.addEventListener("keydown", (e) => {
+			if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+			e.preventDefault();
+			const dir = e.key === "ArrowRight" ? 1 : -1;
+			const next = opts[(i + dir + opts.length) % opts.length];
+			next.focus();
+			applyCurrency(next.dataset.currency);
+		});
+	});
+
+	let saved = "GBP";
+	try { saved = localStorage.getItem(CURRENCY_KEY) || "GBP"; } catch (_) {}
+	applyCurrency(saved, { animate: false });
+}
+
 // ---------- Customer logo showreel ----------
 // The partner-logo carousel is the design team's approved video, looping on mute.
 // Honour reduced-motion preferences by holding on the poster frame instead of playing.
